@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - Resenha Cultural</title>
+    <link href="~/Content/Reset.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/estilo-admin.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <aside>
+        <h1>Administração</h1>
+        <div>
+            <p>Olá, Fulano.</p>
+            <button class="btn btn-default btn-sm">Sair</button>
+        </div>
+        <div>
+            <ul>
+                <li>Posts | <a href="novo-post.html">Novo</a></li>
+                <li>Categorias</li>
+                <li>Usuários</li>
+                <li>Configurações</li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>

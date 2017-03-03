@@ -1,0 +1,21 @@
+﻿@model BlogTeste1.Models.HomeViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(Model.InfoAdicional != String.Empty)
+{
+    <h3>@Model.InfoAdicional</h3>
+}
+
+<main>
+    @foreach (var item in Model.Posts)
+    {
+        <article>
+            <h2>@item.Titulo</h2>
+            <p>@item.Resumo</p>
+            <p class="small">Publicado em @item.DataPublicacao, por Fulano de Tal em @item.Categoria</p>
+        </article>
+    }
+</main>

@@ -1,0 +1,50 @@
+﻿@model IList<BlogTeste1.Models.Post>
+
+<h2>Lista de Posts</h2>
+<table class="table table-striped table-hover table-bordered">
+    <caption>Lista dos posts cadastrados no blog.</caption>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Resumo</th>
+            <th>Categoria</th>
+            <th>Publicado Em</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Titulo, "Edit", new { Id = item.Id })
+                </td>
+                <td>@item.Resumo</td>
+                <td>@item.Categoria</td>
+                <td>
+                    @if (@item.Publicado)
+                    {
+                        @Html.Encode(item.DataPublicacao)
+                    }
+                    else
+                    {
+                        @Html.Raw("Não Publicado")
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Excluir", "Remove", new { Id = item.Id })
+                    @Html.ActionLink("Publicar", "Publicar", new { Id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                @Html.ActionLink("Novo Post!", "Novo", null, new { @class = "btn btn-default" } )
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+

@@ -1,0 +1,19 @@
+﻿@model BlogTeste1.Models.Post
+
+<div class="input-group">
+    @Html.LabelFor(p => p.Titulo)
+    @Html.TextBoxFor(p => p.Titulo, new { @class = "form-control" } )
+    @Html.ValidationMessageFor(p => p.Titulo)
+</div>
+
+<div class="input-group">
+    @Html.LabelFor(p => p.Resumo)
+    @Html.TextBoxFor(p => p.Resumo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.Resumo)
+</div>
+
+<div class="input-group">
+    @Html.LabelFor(p => p.Categoria)
+    @Html.TextBoxFor(p => p.Categoria, new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.Categoria)
+</div>
