@@ -18,17 +18,15 @@ namespace BlogTeste1.Models
         [Display(Name = "Resumo")]
         public string Resumo { get; set; }
 
-        [MaxLength(100)]
-        [Display(Name = "Categoria")]
-        public string Categoria { get; set; }
-
         public bool Publicado { get; set; }
 
         [Display(Name = "Data de Publicação")]
         public DateTime? DataPublicacao { get; set; }
 
+        [Display(Name = "Autor")]
         public virtual Usuario Autor { get; set; }
 
+        [Display(Name = "Categorias")]
         public virtual ICollection<Categoria> Categorias { get; set; }
 
     }

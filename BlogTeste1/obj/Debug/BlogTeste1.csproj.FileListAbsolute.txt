@@ -110,3 +110,6 @@ C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\bin\WebActivatorEx.dll
 C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\bin\Ninject.xml
 C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\bin\Ninject.Web.Common.xml
 C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\bin\Ninject.Web.Mvc.xml
+C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\bin\RefactorThis.GraphDiff.dll
+C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\bin\RefactorThis.GraphDiff.pdb
+C:\Users\dpcosta\Source\Repos\blog1\BlogTeste1\obj\Debug\BlogTeste1.Migrations.ExclusaoPropriedadeCategoria.resources

@@ -3,6 +3,7 @@ namespace BlogTeste1.Migrations
     using Microsoft.AspNet.Identity;
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -40,13 +41,19 @@ namespace BlogTeste1.Migrations
             };
             context.Users.AddOrUpdate(u => u.UserName, user);
 
+            Categoria livros = new Categoria { Id = 1, Nome = "Livros" };
+            Categoria filmes = new Categoria { Id = 2, Nome = "Filmes" };
+            Categoria musicas = new Categoria { Id = 3, Nome = "Músicas" };
+            Categoria series = new Categoria { Id = 4, Nome = "Séries" };
+            context.Categorias.AddOrUpdate( c => c.Id, livros, filmes, musicas, series );
+
             context.Posts.AddOrUpdate(
                 p => p.Id,
-                new Post { Id = 1, Titulo = "Harry Potter", Resumo = "E a pedra filosofal", Categoria = "Livros, Filmes" },
-                new Post { Id = 2, Titulo = "O Senhor dos Anéis", Resumo = "O Retorno do Rei", Categoria = "Livros, Filmes" },
-                new Post { Id = 3, Titulo = "O Monge e o Executivo", Resumo = "Romance sobre Liderança", Categoria = "Livros" },
-                new Post { Id = 4, Titulo = "Game of Thrones", Resumo = "Série popular da Fox", Categoria = "Séries" },
-                new Post { Id = 5, Titulo = "New York, New York", Resumo = "Sucesso de Frank Sinatra", Categoria = "Músicas" }
+                new Post { Id = 1, Titulo = "Harry Potter", Resumo = "E a pedra filosofal", Categorias = new List<Categoria> { livros, filmes } },
+                new Post { Id = 2, Titulo = "O Senhor dos Anéis", Resumo = "O Retorno do Rei", Categorias = new List<Categoria> { livros, filmes } },
+                new Post { Id = 3, Titulo = "O Monge e o Executivo", Resumo = "Romance sobre Liderança", Categorias = new List<Categoria> { livros } },
+                new Post { Id = 4, Titulo = "Game of Thrones", Resumo = "Série popular da Fox", Categorias = new List<Categoria> { series } },
+                new Post { Id = 5, Titulo = "New York, New York", Resumo = "Sucesso de Frank Sinatra", Categorias = new List<Categoria> { musicas } }
             );
         }
     }

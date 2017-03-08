@@ -13,13 +13,7 @@
 </div>
 
 <div class="input-group">
-    @Html.LabelFor(p => p.Categoria)
-    @Html.TextBoxFor(p => p.Categoria, new { @class = "form-control" })
-    @Html.ValidationMessageFor(p => p.Categoria)
-</div>
-
-<div class="input-group">
     @Html.LabelFor(p => p.CategoriasId)
-    @Html.ListBoxFor(p => p.CategoriasId, new SelectList(ViewBag.Categorias, "Id", "Nome"))
+    @Html.ListBoxFor(p => p.CategoriasId, new SelectList(ViewBag.Categorias, "Id", "Nome"), new { @class = "form-control", size = "5" })
     @Html.ValidationMessageFor(p => p.CategoriasId)
 </div>

@@ -9,6 +9,10 @@ using System.Web.Mvc;
 
 namespace BlogTeste1.Areas.Admin.Controllers
 {
+    //TODO: colocar TextArea no campo de Resumo
+    //TODO: criar campo Texto no post, com possibilidade de escrever markdown
+    //TODO: refazer barra lateral, com as categorias vindas do banco, com total de posts por categoria
+    //TODO: refazer barra lateral, com os posts do mês vindos do banco, com total de posts por categoria
     [Authorize]
     public class PostController : Controller
     {
@@ -44,7 +48,6 @@ namespace BlogTeste1.Areas.Admin.Controllers
                 {
                     Titulo = model.Titulo,
                     Resumo = model.Resumo,
-                    Categoria = model.Categoria,
                     Categorias = model.CategoriasId.Select(c => categoriaDao.BuscaPorId(c)).ToList(),
                     Autor = dao.BuscaAutorPeloId(User.Identity.GetUserId())
                 };
@@ -68,7 +71,6 @@ namespace BlogTeste1.Areas.Admin.Controllers
                 Id = post.Id,
                 Titulo = post.Titulo,
                 Resumo = post.Resumo,
-                Categoria = post.Categoria,
                 CategoriasId = post.Categorias != null ? post.Categorias.Select(c => c.Id).ToArray() : null
             };
             return View(model);
@@ -84,9 +86,8 @@ namespace BlogTeste1.Areas.Admin.Controllers
                     Id = model.Id,
                     Titulo = model.Titulo,
                     Resumo = model.Resumo,
-                    Categoria = model.Categoria,
                     Categorias = model.CategoriasId != null ? model.CategoriasId.Select(c => new Categoria { Id = c }).ToList() : null,
-                    Autor = dao.BuscaAutorPeloId(User.Identity.GetUserId())
+                    Autor = new Usuario { Id = User.Identity.GetUserId() }
                 };
                 dao.Atualiza(post);
                 return RedirectToAction("Index");

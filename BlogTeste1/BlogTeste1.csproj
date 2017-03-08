@@ -108,6 +108,10 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RefactorThis.GraphDiff, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RefactorThis.GraphDiff.2.0.1\lib\RefactorThis.GraphDiff.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -235,6 +239,10 @@
     <Compile Include="Migrations\201703071829360_NovaTabelaCategoria1.Designer.cs">
       <DependentUpon>201703071829360_NovaTabelaCategoria1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703081444337_ExclusaoPropriedadeCategoria.cs" />
+    <Compile Include="Migrations\201703081444337_ExclusaoPropriedadeCategoria.Designer.cs">
+      <DependentUpon>201703081444337_ExclusaoPropriedadeCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlogDb.cs" />
     <Compile Include="Models\BlogInfo.cs" />
@@ -293,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703071829360_NovaTabelaCategoria1.resx">
       <DependentUpon>201703071829360_NovaTabelaCategoria1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081444337_ExclusaoPropriedadeCategoria.resx">
+      <DependentUpon>201703081444337_ExclusaoPropriedadeCategoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

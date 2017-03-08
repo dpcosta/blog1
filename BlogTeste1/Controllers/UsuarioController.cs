@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 
 namespace BlogTeste1.Controllers
 {
+    //TODO: fazer o CRUD de usuários para a área administrativa
     public class UsuarioController : Controller
     {
         // GET: Usuario/Login

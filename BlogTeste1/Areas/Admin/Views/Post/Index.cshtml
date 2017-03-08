@@ -20,7 +20,7 @@
                     @Html.ActionLink(item.Titulo, "Edit", new { Id = item.Id })
                 </td>
                 <td>@item.Resumo</td>
-                <td>@item.Categoria</td>
+                <td>@string.Join(", ", item.Categorias.Select(c => c.Nome))</td>
                 <td>
                     @if (@item.Publicado)
                     {

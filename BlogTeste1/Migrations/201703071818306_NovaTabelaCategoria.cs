@@ -29,17 +29,10 @@ namespace BlogTeste1.Migrations
                 .Index(t => t.Post_Id)
                 .Index(t => t.Categoria_Id);
 
-            Sql("INSERT INTO Categorias (Nome) SELECT DISTINCT Categoria FROM Posts WHERE Categoria IS NOT NULL");
-
-            Sql("INSERT INTO Categorias_Posts (IdCategoria, IdPost) SELECT post.Id, cat.Id FROM Posts post INNER JOIN Categorias cat ON post.Categoria=cat.Nome");
-
-
         }
 
         public override void Down()
         {
-            Sql("UPDATE Posts p SET Categoria = (SELECT COALESCE(c.Nome+',','') FROM Categorias c INNER JOIN PostCategorias pc ON pc.Categoria_Id = c.Id WHERE pc.Post_Id = p.Id");
-
             DropForeignKey("dbo.PostCategorias", "Categoria_Id", "dbo.Categorias");
             DropForeignKey("dbo.PostCategorias", "Post_Id", "dbo.Posts");
             DropIndex("dbo.PostCategorias", new[] { "Categoria_Id" });
