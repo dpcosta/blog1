@@ -1,4 +1,4 @@
-﻿@model BlogTeste1.Models.Post
+﻿@model BlogTeste1.Models.PostViewModel
 
 <div class="input-group">
     @Html.LabelFor(p => p.Titulo)
@@ -16,4 +16,10 @@
     @Html.LabelFor(p => p.Categoria)
     @Html.TextBoxFor(p => p.Categoria, new { @class = "form-control" })
     @Html.ValidationMessageFor(p => p.Categoria)
+</div>
+
+<div class="input-group">
+    @Html.LabelFor(p => p.CategoriasId)
+    @Html.ListBoxFor(p => p.CategoriasId, new SelectList(ViewBag.Categorias, "Id", "Nome"))
+    @Html.ValidationMessageFor(p => p.CategoriasId)
 </div>

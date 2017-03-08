@@ -1,0 +1,8 @@
+﻿@model BlogTeste1.Models.Categoria
+
+<div class="input-group">
+    @Html.LabelFor(p => p.Nome)
+    @Html.TextBoxFor(p => p.Nome, new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.Nome)
+</div>
+

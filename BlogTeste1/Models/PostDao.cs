@@ -9,7 +9,12 @@ namespace BlogTeste1.Models
 {
     public class PostDao
     {
-        private BlogDb _db = new BlogDb();
+        private BlogDb _db;
+
+        public PostDao(BlogDb context)
+        {
+            this._db = context;
+        }
 
         public Post BuscaPorId(int id)
         {
@@ -31,8 +36,39 @@ namespace BlogTeste1.Models
 
         public void Atualiza(Post post)
         {
-            DbEntityEntry entity = this._db.Entry(post);
-            entity.State = EntityState.Modified;
+            _db.Entry(post).State = EntityState.Modified;
+
+            var postExistente = _db.Posts.Include("Categorias").Where(p => p.Id == post.Id).FirstOrDefault<Post>();
+
+            var categoriasDeletadas = new List<Categoria>();
+            foreach (var item in postExistente.Categorias)
+            {
+                if (!post.Categorias.Contains(item))
+                {
+                    categoriasDeletadas.Add(item);
+                }
+            }
+
+            var categoriasAdicionadas = new List<Categoria>();
+            foreach (var item in post.Categorias)
+            {
+                if (!postExistente.Categorias.Contains(item))
+                {
+                    categoriasAdicionadas.Add(item);
+                }
+            }
+
+            categoriasDeletadas.ForEach(c => postExistente.Categorias.Remove(c));
+
+            foreach (Categoria item in categoriasAdicionadas)
+            {
+                if (_db.Entry(item).State == EntityState.Detached)
+                {
+                    _db.Categorias.Attach(item);
+                }
+                postExistente.Categorias.Add(item);
+            }
+
             this._db.SaveChanges();
         }
 
@@ -61,6 +97,11 @@ namespace BlogTeste1.Models
         {
             var posts = ListaPublicados().Where(p => p.Titulo.ToUpper().Contains(termo.ToUpper()) || p.Resumo.ToUpper().Contains(termo.ToUpper())).Select(p => p);
             return posts.ToList();
+        }
+
+        public Usuario BuscaAutorPeloId(string id)
+        {
+            return _db.Users.Find(id);
         }
     }
 }

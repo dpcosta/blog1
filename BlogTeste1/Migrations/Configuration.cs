@@ -1,5 +1,6 @@
 namespace BlogTeste1.Migrations
 {
+    using Microsoft.AspNet.Identity;
     using Models;
     using System;
     using System.Data.Entity;
@@ -28,7 +29,16 @@ namespace BlogTeste1.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
+            var passwordHash = new PasswordHasher();
+            string password = passwordHash.HashPassword("admin");
+            Usuario user = new Usuario
+            {
+                UserName = "admin",
+                PasswordHash = password,
+                UltimoLogin = DateTime.Now,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            context.Users.AddOrUpdate(u => u.UserName, user);
 
             context.Posts.AddOrUpdate(
                 p => p.Id,

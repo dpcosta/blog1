@@ -12,13 +12,13 @@
     <aside>
         <h1>Administração</h1>
         <div>
-            <p>Olá, Fulano.</p>
-            <button class="btn btn-default btn-sm">Sair</button>
+            @Html.Action("UsuarioLogado", "Usuario", new { area = "" } )
+            <a class="btn btn-default btn-sm" href="/Usuario/Logout">Sair</a>
         </div>
         <div>
             <ul>
-                <li>Posts | <a href="novo-post.html">Novo</a></li>
-                <li>Categorias</li>
+                <li>@Html.ActionLink("Posts", "Index", "Post")</li>
+                <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
                 <li>Usuários</li>
                 <li>Configurações</li>
             </ul>

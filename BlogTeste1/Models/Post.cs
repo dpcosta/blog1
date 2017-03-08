@@ -27,5 +27,9 @@ namespace BlogTeste1.Models
         [Display(Name = "Data de Publicação")]
         public DateTime? DataPublicacao { get; set; }
 
+        public virtual Usuario Autor { get; set; }
+
+        public virtual ICollection<Categoria> Categorias { get; set; }
+
     }
 }

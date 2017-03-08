@@ -1,0 +1,33 @@
+﻿@model IList<BlogTeste1.Models.Categoria>
+
+<h2>Lista de Categorias</h2>
+<table class="table table-striped table-hover table-bordered">
+    <caption>Lista das categorias dos posts do blog.</caption>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Nome, "Edit", new { Id = item.Id })
+                </td>
+               
+                <td>
+                    @Html.ActionLink("Excluir", "Remove", new { Id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                @Html.ActionLink("Nova Categoria!", "Novo", null, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    </tfoot>
+</table>

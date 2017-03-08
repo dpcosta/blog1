@@ -12,7 +12,12 @@ namespace BlogTeste1.Controllers
     public class HomeController : Controller
     {
 
-        private PostDao dao = new PostDao();
+        private PostDao dao;
+
+        public HomeController(PostDao dao)
+        {
+            this.dao = dao;
+        }
 
         private BlogInfo blog = new BlogInfo
         {
