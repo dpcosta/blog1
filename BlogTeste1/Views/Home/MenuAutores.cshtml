@@ -1,0 +1,10 @@
+﻿@model IList<BlogTeste1.Models.AutorPostViewModel>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.ActionLink(item.AutorNome, "Autor", new { id = item.AutorId })
+            &nbsp;<span class="badge">@item.TotalPosts</span>
+        </li>
+    }
+</ul>

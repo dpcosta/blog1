@@ -13,10 +13,14 @@ namespace BlogTeste1.Controllers
     {
 
         private PostDao dao;
+        private CategoriaDao categoriaDao;
+        private UsuarioDao usuarioDao;
 
-        public HomeController(PostDao dao)
+        public HomeController(PostDao dao, CategoriaDao catDao, UsuarioDao usuarioDao)
         {
             this.dao = dao;
+            this.categoriaDao = catDao;
+            this.usuarioDao = usuarioDao;
         }
 
         private BlogInfo blog = new BlogInfo
@@ -46,6 +50,56 @@ namespace BlogTeste1.Controllers
                 Posts = dao.PesquisarPorTermo(termo)
             };
             return View("Index", model);
+        }
+
+        public ActionResult Categoria(int id)
+        {
+            Categoria categoria = categoriaDao.BuscaPorId(id);
+            var model = new HomeViewModel
+            {
+                Info = blog,
+                InfoAdicional = string.Format("Posts da categoria {0}...", categoria.Nome),
+                Posts = categoria.Posts.ToList()
+            };
+            return View("Index", model);
+        }
+
+        public ActionResult Autor(string id)
+        {
+            Usuario usuario = usuarioDao.BuscaPorId(id);
+            var model = new HomeViewModel
+            {
+                Info = blog,
+                InfoAdicional = string.Format("Posts do autor {0}...", usuario.UserName),
+                Posts = usuario.Posts.ToList()
+            };
+            return View("Index", model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult MenuCategorias()
+        {
+            var catPosts = from c in categoriaDao.Lista()
+                           from p in c.Posts
+                           where p.Publicado
+                           select new { CategoriaId = c.Id, Categoria = c.Nome, PostId = p.Id };
+            var model = from cp in catPosts
+                        group cp by new { cp.CategoriaId, cp.Categoria } into g
+                        select new CategoriaPostViewModel { CategoriaId = g.Key.CategoriaId, Categoria = g.Key.Categoria, TotalPosts = g.Count() };
+            return View(model.ToList());
+        }
+
+        [ChildActionOnly]
+        public ActionResult MenuAutores()
+        {
+            var usuPosts = from u in usuarioDao.Lista()
+                           from p in u.Posts
+                           where p.Publicado
+                           select new { AutorId = u.Id, AutorNome = u.UserName, PostId = p.Id };
+            var model = from a in usuPosts
+                        group a by new { a.AutorId, a.AutorNome } into g
+                        select new AutorPostViewModel { AutorId = g.Key.AutorId, AutorNome = g.Key.AutorNome, TotalPosts = g.Count() };
+            return View(model.ToList());
         }
     }
 }

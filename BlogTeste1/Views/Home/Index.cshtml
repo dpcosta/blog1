@@ -15,7 +15,7 @@
         <article>
             <h2>@item.Titulo</h2>
             <p>@item.Resumo</p>
-            <p class="small">Publicado em @item.DataPublicacao, por Fulano de Tal em @string.Join(", ", item.Categorias.Select(c => c.Nome))</p>
+            <p class="small">Publicado em @string.Format("{0:dd/MM/yyyy}", item.DataPublicacao), por Fulano de Tal em @string.Join(", ", item.Categorias.Select(c => c.Nome))</p>
         </article>
     }
 </main>

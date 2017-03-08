@@ -1,0 +1,10 @@
+﻿@model IList<BlogTeste1.Models.CategoriaPostViewModel>
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>
+            @Html.ActionLink(item.Categoria, "Categoria", new { id = item.CategoriaId } )
+            &nbsp;<span class="badge">@item.TotalPosts</span>
+        </li>
+    }
+</ul>

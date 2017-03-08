@@ -63,5 +63,6 @@ namespace BlogTeste1.Areas.Admin.Controllers
             dao.Remove(id);
             return RedirectToAction("Index");
         }
+
     }
 }

@@ -244,16 +244,19 @@
       <DependentUpon>201703081444337_ExclusaoPropriedadeCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AutorPostViewModel.cs" />
     <Compile Include="Models\BlogDb.cs" />
     <Compile Include="Models\BlogInfo.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\CategoriaDao.cs" />
+    <Compile Include="Models\CategoriaPostViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostDao.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\RegistroViewModel.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\UsuarioDao.cs" />
     <Compile Include="Models\UsuarioManager.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -273,6 +276,8 @@
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Usuario\Registro.cshtml" />
     <Content Include="Views\Usuario\UsuarioLogado.cshtml" />
+    <Content Include="Views\Home\MenuCategorias.cshtml" />
+    <Content Include="Views\Home\MenuAutores.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
