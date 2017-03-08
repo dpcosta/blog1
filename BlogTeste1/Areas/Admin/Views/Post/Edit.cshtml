@@ -3,6 +3,8 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(p => p.Id)
+    @Html.HiddenFor(p => p.Publicado)
+    @Html.HiddenFor(p => p.DataPublicacao)
 
     @Html.EditorFor(p => p)
 

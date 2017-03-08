@@ -8,7 +8,7 @@
 
 <div class="input-group">
     @Html.LabelFor(p => p.Resumo)
-    @Html.TextBoxFor(p => p.Resumo, new { @class = "form-control" })
+    @Html.TextAreaFor(p => p.Resumo, new { @class = "form-control", cols = 120, rows = 5 })
     @Html.ValidationMessageFor(p => p.Resumo)
 </div>
 

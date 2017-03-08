@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace BlogTeste1.Areas.Admin.Controllers
 {
-    //TODO: colocar TextArea no campo de Resumo
+
     //TODO: criar campo Texto no post, com possibilidade de escrever markdown
     //TODO: refazer barra lateral, com as categorias vindas do banco, com total de posts por categoria
     //TODO: refazer barra lateral, com os posts do mês vindos do banco, com total de posts por categoria
@@ -71,6 +71,8 @@ namespace BlogTeste1.Areas.Admin.Controllers
                 Id = post.Id,
                 Titulo = post.Titulo,
                 Resumo = post.Resumo,
+                Publicado = post.Publicado,
+                DataPublicacao = post.DataPublicacao,
                 CategoriasId = post.Categorias != null ? post.Categorias.Select(c => c.Id).ToArray() : null
             };
             return View(model);
@@ -86,6 +88,8 @@ namespace BlogTeste1.Areas.Admin.Controllers
                     Id = model.Id,
                     Titulo = model.Titulo,
                     Resumo = model.Resumo,
+                    Publicado = model.Publicado,
+                    DataPublicacao = model.DataPublicacao,
                     Categorias = model.CategoriasId != null ? model.CategoriasId.Select(c => new Categoria { Id = c }).ToList() : null,
                     Autor = new Usuario { Id = User.Identity.GetUserId() }
                 };

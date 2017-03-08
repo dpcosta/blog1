@@ -5,8 +5,7 @@
     <caption>Lista dos posts cadastrados no blog.</caption>
     <thead>
         <tr>
-            <th>Título</th>
-            <th>Resumo</th>
+            <th>Post</th>
             <th>Categoria</th>
             <th>Publicado Em</th>
             <th>Ações</th>
@@ -17,9 +16,9 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Titulo, "Edit", new { Id = item.Id })
+                    <h4>@Html.ActionLink(item.Titulo, "Edit", new { Id = item.Id })</h4>
+                    <p>@item.Resumo</p>
                 </td>
-                <td>@item.Resumo</td>
                 <td>@string.Join(", ", item.Categorias.Select(c => c.Nome))</td>
                 <td>
                     @if (@item.Publicado)
