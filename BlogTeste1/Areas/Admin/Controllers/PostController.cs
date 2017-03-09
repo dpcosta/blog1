@@ -12,6 +12,8 @@ namespace BlogTeste1.Areas.Admin.Controllers
 
     //TODO: criar campo Texto no post, com possibilidade de escrever markdown
     //TODO: refazer barra lateral, com os posts do mês vindos do banco, com total de posts por categoria
+    //TODO: fazer a persistência das configurações do blog
+    //TODO: implementar funcionalidade de Esqueci a Senha
     [Authorize]
     public class PostController : Controller
     {
